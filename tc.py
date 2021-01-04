@@ -13,7 +13,6 @@ DEFAULT_HEADER = {
     "sec-fetch-mode": "navigate",
     "sec-fetch-dest": "document",
     "Cache-Control": "max-age=0",
-    "Connection": "keep-alive",
     "Host": "twitcasting.tv",
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.183 Safari/537.36 Edg/86.0.622.63",
     "Accept-language": "zh-CN,zh;q=0.9,en;q=0.8,ja;q=0.7,en-GB;q=0.6,en-US;q=0.5",
@@ -70,9 +69,8 @@ class Archive:
         if len(comments) == 0:
             return commentList
         for comment in comments:
-            text = comment.find(class_="tw-comment-history-item__content__text").string.strip()
+            text = comment.find(class_="tw-comment-history-item__content__text").text.strip()
             datetime = comment.find("time").string.strip()
-            user = comment.find(class_="tw-comment-history-item__details__user-link").string.strip()
+            user = comment.find(class_="tw-comment-history-item__details").find("a").text.strip()
             commentList.append({"datetime": datetime, "user": user, "text":text})
         return commentList
-        
