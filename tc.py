@@ -75,7 +75,4 @@ class Archive:
             user = comment.find(class_="tw-comment-history-item__details__user-link").string.strip()
             commentList.append({"datetime": datetime, "user": user, "text":text})
         return commentList
-
-a = Archive("https://twitcasting.tv/kaguramea_vov/movie/553049369")
-c = a.get_comments(0)
-print(a.commentnum, a.datetime, a.duration, a.wrapper, a.pages)
+        

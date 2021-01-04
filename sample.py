@@ -17,7 +17,7 @@ for aid in id_list:
     print(archive.commentnum)  # comment number
     print(archive.wrapper)  # wrapper's url of stream
 
-    with open("./{}.txt".format(archive.id), "w", encoding="utf-8") as f:
+    with open("./{}.txt".format(archive.id), "a", encoding="utf-8") as f:
         # You can use "pages" to get every page of comments, or several pages you need.
         # But for an old archive, there were only later 5000(250p) comments had be retained.
         for page in tqdm(range(archive.pages)):
